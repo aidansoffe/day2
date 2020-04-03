@@ -1,6 +1,6 @@
 
-
 function squared(n){
+  
    n = n.toString().split('').map(Number)
    const result = n.reduce((a,b) => a + (b*b), 0)
    return result
@@ -8,14 +8,21 @@ function squared(n){
 
 
 
-function isHappy(num) {
-let res;
-do {
- res = squared(num)
- isHappy(res)
-console.log(res)
-} while (res != 1);
-return 'done'
-}
+function isHappy(num, counter = 0) {
+ 
+let value = squared(num);
 
-isHappy(19)
+    if(value == 1){
+      return true
+    }
+
+    if(counter > 10){
+      return false
+    }
+
+ if (value != 1) {
+   return isHappy(value, counter += 1)
+    } 
+    
+
+}
